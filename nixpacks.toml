@@ -1,0 +1,6 @@
+# nixpacks.toml configuration to bypass ./mvnw execution issues on Linux containers
+[phases.build]
+cmds = ["mvn clean package -DskipTests=true"]
+
+[start]
+cmd = "java -jar target/Take-Note-0.0.1-SNAPSHOT.jar"
