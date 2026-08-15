@@ -1,5 +1,7 @@
 # 🚀 Take Note - Smart Notes Management System
 
+**Live Demo:** 👉 **[https://take-note-system.onrender.com](https://take-note-system.onrender.com)**
+
 **Take Note** is a complete, full-stack, secure Web application built with **Spring Boot 3**, **Java 17**, and **MySQL**. It features JWT-based authentication, user-scoped note CRUD operations, dynamic tags, and note statistics.
 
 ---
@@ -64,27 +66,33 @@
 
 ---
 
-## 🚀 Deployment to Railway.app
+## 🚀 Deployment to Render.com & Clever Cloud (100% Free)
 
-This project is fully optimized for **Railway.app** deployment with secure, zero-hardcoded secrets.
+This project is optimized for cloud deployment using **Render** (for the Spring Boot app container) and **Clever Cloud** (for the MySQL database).
 
-### 1. Database Provisioning
-*   Log into [Railway.app](https://railway.app) and click **New Project** -> **Provision MySQL**.
+### 1. Database Setup (Clever Cloud)
+*   Create a free account on [Clever Cloud](https://www.clever-cloud.com/).
+*   Click **Create...** -> **An Add-on** -> **MySQL** -> Select **Free "Dev" Plan**.
+*   Once created, copy the Host, Database Name, User, and Password from the dashboard connection panel.
 
-### 2. Service Deployment
-*   Click **New** -> **GitHub Repo** and select this `take-note` repository.
+### 2. Service Setup (Render)
+*   Create a free account on [Render](https://render.com/) and connect your GitHub repo.
+*   Click **New +** -> **Web Service** -> Select this `take-note` repository.
+*   Configure the service parameters:
+    *   **Runtime:** `Docker` (Render reads the `Dockerfile` automatically)
+    *   **Build Command:** *(Leave completely empty)*
+    *   **Start Command:** *(Leave completely empty)*
+    *   **Instance Type:** `Free`
 
-### 3. Setup Variables
-Select the deployed Spring Boot service, navigate to the **Variables** tab, and add the following 4 environment variables:
+### 3. Configure Environment Variables
+Go to the **Environment** tab on Render and add these 4 variables:
 
 | Variable Name | Value | Description |
 | :--- | :--- | :--- |
-| `DB_URL` | `jdbc:mysql://${{MySQL.MYSQLHOST}}:${{MySQL.MYSQLPORT}}/${{MySQL.MYSQLDATABASE}}` | Dynamically references host, port, and database name |
-| `DB_USERNAME` | `${{MySQL.MYSQLUSER}}` | References MySQL username |
-| `DB_PASSWORD` | `${{MySQL.MYSQLPASSWORD}}` | References MySQL password |
+| `DB_URL` | `jdbc:mysql://[YOUR_CLEVER_CLOUD_HOST]:3306/[YOUR_CLEVER_CLOUD_DB]` | Connection link to Clever Cloud |
+| `DB_USERNAME` | `[YOUR_CLEVER_CLOUD_USER]` | References MySQL username |
+| `DB_PASSWORD` | `[YOUR_CLEVER_CLOUD_PASSWORD]` | References MySQL password |
 | `JWT_SECRET` | `TakeNoteSecretKey2024SuperSecureForJWTHMACSHA256!` | Secure JWT token key |
-
-*Railway will automatically link your database variables to the Spring Boot app!*
 
 ---
 
