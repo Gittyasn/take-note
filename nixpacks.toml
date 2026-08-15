@@ -1,4 +1,6 @@
-# nixpacks.toml configuration to bypass ./mvnw execution issues on Linux containers
+[phases.setup]
+nixPkgs = ["maven", "openjdk17"]
+
 [phases.build]
 cmds = ["mvn clean package -DskipTests=true"]
 
