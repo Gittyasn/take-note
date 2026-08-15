@@ -6,7 +6,7 @@
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+##  Tech Stack & Architecture
 
 *   **Backend:** Java 17, Spring Boot 3, Spring Security, Spring Data JPA, Hibernate
 *   **Authentication:** JSON Web Tokens (JWT) stored in secure browser session cookies
