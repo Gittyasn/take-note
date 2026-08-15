@@ -96,5 +96,5 @@ Go to the **Environment** tab on Render and add these 4 variables:
 
 ---
 
-## 🔒 Security Policy
+##  Security Policy
 All passwords are encrypted using BCrypt. API access is fully secured via JSON Web Tokens. Note CRUD routes enforce note ownership checks at the controller level to prevent unauthorized access.
