@@ -66,7 +66,7 @@
 
 ---
 
-## 🚀 Deployment to Render.com & Clever Cloud (100% Free)
+##  Deployment to Render.com & Clever Cloud (100% Free)
 
 This project is optimized for cloud deployment using **Render** (for the Spring Boot app container) and **Clever Cloud** (for the MySQL database).
 
