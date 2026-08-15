@@ -1,4 +1,4 @@
-# 🚀 Take Note - Smart Notes Management System
+#  Take Note - Smart Notes Management System
 
 **Live Demo:** 👉 **[https://take-note-system.onrender.com](https://take-note-system.onrender.com)**
 
