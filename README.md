@@ -25,7 +25,7 @@
 
 ---
 
-## 🏃 Local Installation & Running
+##  Local Installation & Running
 
 ### Prerequisites
 *   Java Development Kit (JDK) 17
