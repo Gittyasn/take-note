@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{ base :: layout( ~{::title}, ~{::section} ) }">
+<head>
+<meta charset="UTF-8">
+<title>Register:: Take Note</title>
+</head>
+<body>
+	<section>
+		<div class="container mt-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card mt-3 shadow">
+						<div class="card-header text-center bg-light"> 
+							<h3 class="fw-bold text-primary">Create Account</h3>
+							<th:block th:if="${session.message}">
+								<div class="alert alert-info alert-dismissible fade show mx-3 mt-2" role="alert">
+									[[${session.message}]]
+									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								</div>
+								<th:block th:text="${@userServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+						</div>
+						
+						<div class="card-body p-4 p-md-5">
+							<form th:action="@{/save-user}" method="post" th:object="${user}">
+								
+								<div class="row mb-3">
+									<div class="col-md-6 mb-3 mb-md-0">
+										<label class="form-label fw-bold"><i class="fa-solid fa-user text-primary me-1"></i> Full Name</label>
+										<input class="form-control bg-light" type="text" th:field="*{name}" placeholder="Enter your name" required />
+									</div>
+									<div class="col-md-6">
+										<label class="form-label fw-bold"><i class="fa-solid fa-envelope text-primary me-1"></i> Email Address</label>
+										<input class="form-control bg-light" type="email" th:field="*{email}" placeholder="example@mail.com" required />
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-md-6 mb-3 mb-md-0">
+										<label class="form-label fw-bold"><i class="fa-solid fa-location-dot text-primary me-1"></i> Address</label>
+										<input class="form-control bg-light" type="text" th:field="*{address}" placeholder="City, State" required />
+									</div>
+									<div class="col-md-6">
+										<label class="form-label fw-bold"><i class="fa-solid fa-phone text-primary me-1"></i> Phone Number</label>
+										<input class="form-control bg-light" type="text" th:field="*{phone}" placeholder="10-digit number" required />
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-md-6 mb-3 mb-md-0">
+										<label class="form-label fw-bold d-block"><i class="fa-solid fa-venus-mars text-primary me-1"></i> Gender</label>
+										<div class="form-check form-check-inline mt-2">
+											<input class="form-check-input" type="radio" th:field="*{gender}" value="Male" id="maleRadio" required>
+											<label class="form-check-label" for="maleRadio">Male</label>
+										</div>
+										<div class="form-check form-check-inline mt-2">
+											<input class="form-check-input" type="radio" th:field="*{gender}" value="Female" id="femaleRadio" required>
+											<label class="form-check-label" for="femaleRadio">Female</label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label class="form-label fw-bold"><i class="fa-solid fa-lock text-primary me-1"></i> Password</label>
+										<input class="form-control bg-light" type="password" th:field="*{password}" placeholder="Min 8 characters" required />
+									</div>
+								</div>
+
+								<div class="mt-4 pt-2">
+									<button type="submit" class="btn btn-primary-custom w-100 py-2 fs-5 fw-bold text-white shadow" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border: none; border-radius: 8px;">Register Now</button>
+								</div>
+
+								<div class="text-center mt-4">
+									<span class="text-muted">Already have an account?</span> <a th:href="@{/signin}" class="text-primary fw-bold" style="text-decoration:none;">Login here</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

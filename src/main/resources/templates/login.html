@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" th:replace="~{ base :: layout( ~{::title}, ~{::section} ) }">
+<head>
+<meta charset="UTF-8">
+<title>Login:: Take Note</title>
+</head>
+<body>
+<section>
+	<!-- table code -->
+
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card mt-3">
+						
+						<div class="card-header text-center bg-light border-0 pt-4 pb-0"> 
+							<h3 class="fw-bold text-primary mb-0">Welcome Back</h3>
+							<!-- Logout success banner: shown when redirected with ?logout -->
+							<div id="logoutBanner" class="alert alert-success py-1 mt-3 mb-0" style="display:none; font-size: 0.9rem;">Logged out successfully.</div>
+						</div>
+						
+						<div class="card-body p-4 p-md-5">
+
+							
+							<form id="loginForm">
+								
+								<div class="mb-4">
+									<label for="email" class="form-label fw-bold"><i class="fa-solid fa-envelope text-primary me-1"></i> Username/Email</label> 
+									<input class="form-control bg-light py-2" type="text" id="email" required="required" placeholder="Enter your email" />
+								</div>
+
+								<div class="mb-4">
+									<label for="password" class="form-label fw-bold"><i class="fa-solid fa-lock text-primary me-1"></i> Password</label> 
+									<input class="form-control bg-light py-2" type="password" id="password" required="required" placeholder="Enter your password" />
+								</div>
+
+								<div id="errorMsg" class="alert alert-danger py-2" style="display:none; font-size: 0.9rem;"></div>
+
+								<div class="mt-4 pt-2">
+									<button type="submit" class="btn btn-primary-custom w-100 py-2 fs-5 fw-bold text-white shadow" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border: none; border-radius: 8px;">Login</button>
+								</div>
+
+							</form>
+
+							<script>
+								document.getElementById('loginForm').addEventListener('submit', async function(e) {
+									e.preventDefault();
+									const email = document.getElementById('email').value;
+									const password = document.getElementById('password').value;
+									
+									try {
+										const response = await fetch('/api/auth/login', {
+											method: 'POST',
+											headers: { 'Content-Type': 'application/json' },
+											body: JSON.stringify({ email, password })
+										});
+										
+										if (response.ok) {
+											const data = await response.json();
+											// Set JWT in HttpOnly equivalent or standard cookie for Thymeleaf to read
+											document.cookie = "JWT_TOKEN=" + data.token + "; path=/;";
+											window.location.href = '/user/view-notes';
+										} else {
+											document.getElementById('errorMsg').innerText = "Invalid credentials";
+											document.getElementById('errorMsg').style.display = 'block';
+										}
+									} catch (err) {
+										document.getElementById('errorMsg').innerText = "Server error";
+										document.getElementById('errorMsg').style.display = 'block';
+									}
+							});
+
+								// Show logout success banner if ?logout is in the URL
+								if (new URLSearchParams(window.location.search).has('logout')) {
+									document.getElementById('logoutBanner').style.display = 'block';
+								}
+							</script>
+						</div>
+						<div class="card-footer text-center bg-white border-0 pb-4">
+							<p class="fs-6 text-muted mb-0">Don't have an account?
+							<a href="/register" class="text-primary fw-bold" style="text-decoration:none;">Register here</a>
+							</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- end of table code -->
+</section>
+
+</body>
+</html>

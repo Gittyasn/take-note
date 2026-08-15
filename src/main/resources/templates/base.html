@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+	th:fragment="layout(title,content)">
+<head>
+<meta charset="UTF-8">
+<title th:replace="${title}"></title>
+
+<!-- CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<!-- End CSS -->
+
+<!-- font awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- font awesome -->
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: #f8fafc;
+	color: #1e293b;
+}
+
+/* Custom premium navbar */
+.bg-wasim {
+	background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	color: white !important;
+}
+
+.navbar-brand {
+	font-weight: 700;
+	letter-spacing: -0.5px;
+}
+
+/* Card Styling */
+.card {
+	border: none;
+	border-radius: 12px;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+	background-color: #ffffff;
+	border-bottom: 1px solid #f1f5f9;
+	border-radius: 12px 12px 0 0 !important;
+}
+
+/* Button Styling */
+.btn-primary-custom, .bg-wasim-btn {
+	background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+	border: none;
+	color: white;
+	font-weight: 500;
+	border-radius: 8px;
+	transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover, .bg-wasim-btn:hover {
+	background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+	color: white;
+}
+
+/* Inputs */
+.form-control {
+	border-radius: 8px;
+	border: 1px solid #e2e8f0;
+	padding: 0.6rem 1rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+	border-color: #6366f1;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Utilities */
+.ws {
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+</style>
+</head>
+<body>
+
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-wasim">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/"><i class="fa-solid fa-book"></i>
+				Take Notes</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/"><i class="fa-solid fa-home"></i>
+							Home</a></li>
+
+					
+
+				</ul>
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+				<th:block th:if="${loggedInUser==null}">
+
+				<li class="nav-item"><a href="/register"
+				class="btn btn-sm btn-light rounded-pill px-3 fw-bold"><i class="fa-solid fa-user-plus"></i>
+					Register</a></li>
+
+				<li class="nav-item"><a href="/signin"
+				class="btn btn-sm btn-outline-light rounded-pill px-3 fw-bold ms-2"><i
+					class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+
+				</th:block>
+
+				<th:block th:if="${loggedInUser!=null}">
+				<li class="nav-item"><span
+				class="btn btn-sm btn-light rounded-pill px-3 fw-bold text-primary"><i class="fa-solid fa-user"></i>
+					[[${loggedInUser.name}]]</span></li>
+
+				<li class="nav-item"><a href="/logout"
+				class="btn btn-sm btn-outline-light rounded-pill px-3 fw-bold ms-2"><i
+					class="fa-solid fa-right-to-bracket"></i> Logout</a></li>
+
+				</th:block>
+
+			</ul>
+
+			</div>
+		</div>
+	</nav>
+	<!-- end of navbar -->
+
+	<div th:replace="${content}"></div>
+
+	<!-- JS Bootstrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
