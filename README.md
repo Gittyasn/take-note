@@ -15,7 +15,7 @@
 
 ---
 
-## 📂 Key Features
+##  Key Features
 
 1.  **JWT Authentication:** Secure user registration, password hashing (BCrypt), and login session handling using cookies.
 2.  **Private Notes (CRUD):** Users can only View, Add, Edit, or Delete notes that belong to their specific account (ownership-hardened).
