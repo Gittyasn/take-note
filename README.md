@@ -1,6 +1,6 @@
 #  Take Note - Smart Notes Management System
 
-**Live Demo:** 👉 **[https://take-note-system.onrender.com](https://take-note-system.onrender.com)**
+***Live Demo:*** 👉 **[https://take-note-system.onrender.com](https://take-note-system.onrender.com)**
 
 **Take Note** is a complete, full-stack, secure Web application built with **Spring Boot 3**, **Java 17**, and **MySQL**. It features JWT-based authentication, user-scoped note CRUD operations, dynamic tags, and note statistics.
 
