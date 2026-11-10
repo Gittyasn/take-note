@@ -13,7 +13,7 @@ Live Demo: 👉 **[https://take-note-system.onrender.com](https://take-note-syst
 *   **Database:** MySQL (Supports user-scoped duplicate tag names)
 *   **Frontend:** HTML5, CSS3, Thymeleaf, Bootstrap 5, FontAwesome Icons
 
----
+-----
 
 ##  Key Features
 
@@ -23,14 +23,14 @@ Live Demo: 👉 **[https://take-note-system.onrender.com](https://take-note-syst
 4.  **Live Stats:** Sidebar dynamically shows total notes and total favorite notes count.
 5.  **Clean SPA Experience:** Add, edit, and delete notes dynamically using Bootstrap Modals without page reloads.
 
----
+-----
 
 ##  Local Installation & Running
 
 ### Prerequisites
 *   Java Development Kit (JDK) 17
 *   MySQL Server installed and running
-
+*   VS Code Editor
 ### Step-by-Step Setup:
 
 1.  **Clone the Repository:**
